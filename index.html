@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Majid Motivation — Réussis tes révisions</title>
+<meta name="description" content="Majid Motivation : cours, exercices, conseils de révision et préparation aux examens pour avancer chaque jour.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+  /* ==========================================================
+     1) VARIABLES DE COULEUR ET DE STYLE
+     Tout est défini ici une seule fois : si tu veux changer
+     une couleur du site entier, tu la changes seulement ici.
+  ========================================================== */
+  :root{
+    --nuit: #131B3A;       /* bleu nuit profond : fond des sections sombres */
+    --nuit-2: #1B2650;     /* variante un peu plus claire du bleu nuit */
+    --papier: #FAF8F3;     /* fond clair, couleur "papier" */
+    --sable: #EFE8D8;      /* fond des cartes sur fond clair */
+    --ambre: #F2A93B;      /* couleur d'accent : boutons, surlignage */
+    --ambre-fonce: #D68C1F;
+    --ardoise: #3C4A7B;    /* bleu secondaire, liens et détails */
+    --texte: #1C1F2A;      /* texte principal sur fond clair */
+    --texte-doux: #52586b; /* texte secondaire, plus discret */
+    --blanc-casse: #FDFBF6;
+    --ligne: rgba(28,31,42,0.12);
+
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    --rayon: 14px;
+    --rayon-grand: 22px;
+    --ombre: 0 12px 30px -14px rgba(19, 27, 58, 0.35);
+  }
+
+  /* Respecte les personnes qui préfèrent moins d'animations */
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    font-family: var(--sans);
+    color: var(--texte);
+    background: var(--papier);
+    line-height: 1.55;
+  }
+  h1,h2,h3{
+    font-family: var(--serif);
+    margin: 0;
+    color: var(--nuit);
+    letter-spacing: -0.01em;
+  }
+  p{ margin: 0; }
+  a{ color: inherit; text-decoration: none; }
+  ul{ list-style: none; margin:0; padding:0; }
+  img,svg{ display:block; max-width:100%; }
+  button{ font-family: inherit; cursor:pointer; border:none; background:none; }
+
+  .conteneur{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .visuellement-cache{
+    position:absolute; width:1px; height:1px; overflow:hidden;
+    clip:rect(0,0,0,0); white-space:nowrap;
+  }
+
+  /* Focus clavier bien visible, important pour l'accessibilité */
+  a:focus-visible, button:focus-visible, .filtre-bouton:focus-visible{
+    outline: 3px solid var(--ambre);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  /* ==========================================================
+     2) EN-TÊTE / NAVIGATION
+  ========================================================== */
+  .entete{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250, 248, 243, 0.9);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--ligne);
+  }
+  .entete-barre{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 16px 24px;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--nuit);
+  }
+  .logo-marque{
+    width: 34px; height: 34px;
+    border-radius: 9px;
+    background: var(--nuit);
+    display:flex; align-items:center; justify-content:center;
+    color: var(--ambre);
+    font-family: var(--serif);
+    font-weight: 700;
+    flex-shrink:0;
+  }
+  .nav-liens{
+    display:flex;
+    gap: 30px;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .nav-liens a{
+    color: var(--texte-doux);
+    padding: 6px 2px;
+    border-bottom: 2px solid transparent;
+    transition: color .15s ease, border-color .15s ease;
+  }
+  .nav-liens a:hover{ color: var(--nuit); border-color: var(--ambre); }
+
+  .entete-actions{ display:flex; align-items:center; gap:14px; }
+
+  .bouton{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .bouton-principal{
+    background: var(--ambre);
+    color: var(--nuit);
+  }
+  .bouton-principal:hover{
+    background: var(--ambre-fonce);
+    transform: translateY(-2px);
+    box-shadow: var(--ombre);
+  }
+  .bouton-sombre{ background: var(--nuit); color: var(--papier); }
+  .bouton-sombre:hover{ background: var(--nuit-2); transform: translateY(-2px); }
+
+  .menu-mobile-bouton{
+    display:none;
+    width: 40px; height: 40px;
+    align-items:center; justify-content:center;
+    border-radius: 8px;
+  }
+  .menu-mobile-bouton span, .menu-mobile-bouton::before, .menu-mobile-bouton::after{
+    content:""; display:block; width:20px; height:2px; background:var(--nuit);
+    position:relative; transition: transform .2s ease, opacity .2s ease;
+  }
+  .menu-mobile-bouton::before{ transform: translateY(-6px); }
+  .menu-mobile-bouton::after{ transform: translateY(4px); }
+  .menu-mobile-bouton.ouvert span{ opacity:0; }
+  .menu-mobile-bouton.ouvert::before{ transform: rotate(45deg); }
+  .menu-mobile-bouton.ouvert::after{ transform: rotate(-45deg); }
+
+  /* ==========================================================
+     3) HERO (grand titre d'accueil)
+  ========================================================== */
+  .hero{
+    background: linear-gradient(180deg, var(--nuit) 0%, var(--nuit-2) 100%);
+    color: var(--papier);
+    position: relative;
+    overflow: hidden;
+    padding: 76px 0 96px;
+  }
+  /* Lignes fines en fond, clin d'œil au cahier de révision */
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image: repeating-linear-gradient(
+      to bottom, transparent, transparent 39px, rgba(250,248,243,0.05) 40px
+    );
+    pointer-events:none;
+  }
+  .hero-grille{
+    position:relative;
+    display:grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items:center;
+  }
+  .hero-eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color: var(--ambre);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 22px;
+    opacity:0;
+    animation: apparition .6s ease forwards;
+  }
+  .hero-eyebrow .point{
+    width:7px; height:7px; border-radius:50%; background: var(--ambre);
+  }
+  .hero h1{
+    font-size: clamp(2.6rem, 5vw, 4.2rem);
+    line-height: 1.05;
+    color: var(--blanc-casse);
+    opacity:0;
+    animation: apparition .7s ease .1s forwards;
+  }
+  .hero-phrase{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+    color: var(--ambre);
+    margin-top: 20px;
+    opacity:0;
+    animation: apparition .7s ease .22s forwards;
+  }
+  .hero-texte{
+    max-width: 46ch;
+    margin-top: 18px;
+    color: rgba(250,248,243,0.78);
+    font-size: 1.05rem;
+    opacity:0;
+    animation: apparition .7s ease .32s forwards;
+  }
+  .hero-actions{
+    margin-top: 34px;
+    display:flex;
+    align-items:center;
+    gap: 22px;
+    flex-wrap: wrap;
+    opacity:0;
+    animation: apparition .7s ease .42s forwards;
+  }
+  .hero-lien-secondaire{
+    font-weight:600;
+    color: var(--papier);
+    border-bottom: 1px solid rgba(250,248,243,0.4);
+    padding-bottom: 2px;
+  }
+  .hero-lien-secondaire:hover{ border-color: var(--ambre); color: var(--ambre); }
+
+  @keyframes apparition{
+    from{ opacity:0; transform: translateY(14px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  /* Carte "série de jours" à droite du hero */
+  .carte-serie{
+    background: rgba(250,248,243,0.06);
+    border: 1px solid rgba(250,248,243,0.14);
+    border-radius: var(--rayon-grand);
+    padding: 28px;
+    opacity:0;
+    animation: apparition .8s ease .5s forwards;
+  }
+  .carte-serie-entete{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-bottom: 18px;
+  }
+  .carte-serie-entete p:first-child{ color: rgba(250,248,243,0.6); font-size:0.85rem; font-weight:600; }
+  .carte-serie-nombre{
+    font-family: var(--serif); font-size: 2.4rem; color: var(--ambre); line-height:1;
+  }
+  .jours-semaine{
+    display:grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .jour{
+    aspect-ratio: 1;
+    border-radius: 8px;
+    background: rgba(250,248,243,0.08);
+    display:flex; align-items:center; justify-content:center;
+    font-size: 0.7rem; color: rgba(250,248,243,0.5); font-weight:600;
+  }
+  .jour.fait{ background: var(--ambre); color: var(--nuit); }
+  .carte-serie-citation{
+    border-top: 1px solid rgba(250,248,243,0.14);
+    padding-top: 18px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.98rem;
+    color: rgba(250,248,243,0.85);
+  }
+
+  /* ==========================================================
+     4) SECTION "CE QUE TU TROUVES ICI" (résumé des ressources)
+  ========================================================== */
+  .apercu{
+    padding: 88px 0 40px;
+  }
+  .section-entete{
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+  .section-entete h2{
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+  }
+  .section-entete p{
+    margin-top: 14px;
+    color: var(--texte-doux);
+    font-size: 1.05rem;
+  }
+
+  .apercu-grille{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .apercu-carte{
+    background: var(--blanc-casse);
+    border: 1px solid var(--ligne);
+    border-radius: var(--rayon);
+    padding: 26px 22px;
+  }
+  .apercu-icone{
+    width: 44px; height:44px;
+    border-radius: 10px;
+    background: var(--sable);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom: 18px;
+    color: var(--ardoise);
+  }
+  .apercu-carte h3{ font-size: 1.1rem; margin-bottom: 8px; }
+  .apercu-carte p{ color: var(--texte-doux); font-size: 0.93rem; }
+
+  /* ==========================================================
+     5) RESSOURCES (avec filtres interactifs)
+  ========================================================== */
+  .ressources{
+    padding: 60px 0 100px;
+  }
+  .filtres{
+    display:flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+    border-bottom: 1px solid var(--ligne);
+    padding-bottom: 28px;
+  }
+  .filtre-bouton{
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--ligne);
+    background: var(--blanc-casse);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--texte-doux);
+    transition: all .15s ease;
+  }
+  .filtre-bouton:hover{ border-color: var(--ardoise); color: var(--nuit); }
+  .filtre-bouton.actif{
+    background: var(--nuit);
+    border-color: var(--nuit);
+    color: var(--papier);
+  }
+
+  .ressources-grille{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .ressource-carte{
+    background: var(--blanc-casse);
+    border: 1px solid var(--ligne);
+    border-radius: var(--rayon);
+    padding: 26px;
+    display:flex;
+    flex-direction:column;
+    gap: 14px;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .ressource-carte:hover{ transform: translateY(-4px); box-shadow: var(--ombre); }
+  .ressource-tag{
+    align-self:flex-start;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: var(--sable);
+    color: var(--ardoise);
+  }
+  .ressource-carte h3{ font-size: 1.15rem; }
+  .ressource-carte p{ color: var(--texte-doux); font-size: 0.93rem; flex-grow:1; }
+  .ressource-meta{
+    display:flex; justify-content:space-between; align-items:center;
+    font-size: 0.85rem; color: var(--texte-doux);
+    padding-top: 12px;
+    border-top: 1px solid var(--ligne);
+  }
+  .ressource-lien{ font-weight:700; color: var(--ardoise); }
+  .ressource-carte:hover .ressource-lien{ color: var(--ambre-fonce); }
+
+  /* Carte mise en avant : préparation aux examens, plus grande */
+  .ressource-carte.mise-en-avant{
+    grid-column: span 3;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    align-items:center;
+    gap: 36px;
+    background: var(--nuit);
+    border-color: var(--nuit);
+    padding: 38px;
+  }
+  .mise-en-avant h3, .mise-en-avant .ressource-tag{ color: var(--blanc-casse); }
+  .mise-en-avant .ressource-tag{ background: rgba(250,248,243,0.14); color: var(--ambre); }
+  .mise-en-avant p{ color: rgba(250,248,243,0.72); }
+  .mise-en-avant .ressource-lien{ color: var(--ambre); }
+  .mise-en-avant .ressource-meta{ border-top-color: rgba(250,248,243,0.14); color: rgba(250,248,243,0.6); }
+
+  .liste-cachee{ display:none !important; }
+
+  /* ==========================================================
+     6) COMMENT ÇA MARCHE (vraie séquence : numérotation logique)
+  ========================================================== */
+  .fonctionnement{
+    background: var(--sable);
+    padding: 90px 0;
+  }
+  .etapes{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 46px;
+    position: relative;
+  }
+  .etape{ position:relative; }
+  .etape-numero{
+    font-family: var(--serif);
+    font-size: 2.6rem;
+    color: var(--ambre-fonce);
+    line-height:1;
+    margin-bottom: 14px;
+  }
+  .etape h3{ font-size: 1.15rem; margin-bottom: 8px; }
+  .etape p{ color: var(--texte-doux); font-size: 0.95rem; }
+
+  /* ==========================================================
+     7) CITATION DU JOUR (interactive)
+  ========================================================== */
+  .citation-section{
+    padding: 90px 0;
+  }
+  .citation-boite{
+    background: var(--nuit);
+    border-radius: var(--rayon-grand);
+    padding: 56px;
+    text-align:center;
+    position: relative;
+    overflow:hidden;
+  }
+  .citation-boite::after{
+    content:"”";
+    position:absolute;
+    top:-40px; right:24px;
+    font-family: var(--serif);
+    font-size: 220px;
+    color: rgba(250,248,243,0.05);
+    line-height:1;
+  }
+  #texte-citation{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+    color: var(--blanc-casse);
+    max-width: 720px;
+    margin: 0 auto;
+    min-height: 3.4em;
+    display:flex; align-items:center; justify-content:center;
+  }
+  #auteur-citation{
+    display:block;
+    margin-top: 18px;
+    color: var(--ambre);
+    font-weight:600;
+    font-size: 0.95rem;
+  }
+  .citation-bouton{
+    margin-top: 30px;
+    background: var(--ambre);
+    color: var(--nuit);
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-weight:700;
+  }
+  .citation-bouton:hover{ background: var(--ambre-fonce); }
+
+  /* ==========================================================
+     8) PIED DE PAGE
+  ========================================================== */
+  .pied{
+    background: var(--nuit);
+    color: rgba(250,248,243,0.7);
+    padding: 60px 0 30px;
+  }
+  .pied-grille{
+    display:grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(250,248,243,0.12);
+  }
+  .pied-logo{ color: var(--blanc-casse); margin-bottom: 12px; }
+  .pied p{ font-size: 0.9rem; line-height:1.6; max-width: 32ch; }
+  .pied h4{
+    color: var(--blanc-casse);
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight:700;
+    margin-bottom: 16px;
+  }
+  .pied-liens li{ margin-bottom: 10px; }
+  .pied-liens a{ font-size: 0.9rem; transition: color .15s ease; }
+  .pied-liens a:hover{ color: var(--ambre); }
+  .pied-bas{
+    padding-top: 24px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    font-size: 0.82rem;
+    color: rgba(250,248,243,0.45);
+  }
+
+  /* ==========================================================
+     9) RESPONSIVE — tablette puis mobile
+  ========================================================== */
+  @media (max-width: 900px){
+    .hero-grille{ grid-template-columns: 1fr; }
+    .carte-serie{ max-width: 420px; }
+    .apercu-grille{ grid-template-columns: repeat(2, 1fr); }
+    .ressources-grille{ grid-template-columns: repeat(2, 1fr); }
+    .ressource-carte.mise-en-avant{ grid-column: span 2; grid-template-columns: 1fr; }
+    .etapes{ grid-template-columns: 1fr; gap: 34px; }
+    .pied-grille{ grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 640px){
+    .nav-liens{ display:none; }
+    .menu-mobile-bouton{ display:flex; flex-direction:column; align-items:center; justify-content:center; }
+    .entete-actions .bouton-principal{ display:none; }
+
+    .hero{ padding: 50px 0 64px; }
+    .apercu, .ressources, .citation-section{ padding-top: 56px; padding-bottom: 56px; }
+    .fonctionnement{ padding: 60px 0; }
+    .apercu-grille{ grid-template-columns: 1fr; }
+    .ressources-grille{ grid-template-columns: 1fr; }
+    .ressource-carte.mise-en-avant{ grid-column: span 1; padding: 26px; }
+    .citation-boite{ padding: 34px 22px; }
+    .pied-grille{ grid-template-columns: 1fr; gap: 28px; }
+    .pied-bas{ flex-direction:column; }
+  }
+
+  /* Menu mobile déroulant */
+  .nav-liens-mobile{
+    display:none;
+    flex-direction:column;
+    gap: 2px;
+    padding: 10px 24px 20px;
+    border-top: 1px solid var(--ligne);
+  }
+  .nav-liens-mobile.ouvert{ display:flex; }
+  .nav-liens-mobile a{
+    padding: 12px 4px;
+    font-weight:600;
+    color: var(--texte);
+    border-bottom: 1px solid var(--ligne);
+  }
+  /* ==========================================================
+     MODALE DE LECTURE (affiche le contenu complet d'une ressource)
+  ========================================================== */
+  .modale-fond{
+    display:none;
+    position:fixed; inset:0;
+    background: rgba(19,27,58,0.55);
+    z-index: 200;
+    align-items:center; justify-content:center;
+    padding: 24px;
+  }
+  .modale-fond.ouverte{ display:flex; }
+  .modale-boite{
+    background: var(--blanc-casse);
+    border-radius: var(--rayon-grand);
+    max-width: 680px;
+    width:100%;
+    max-height: 85vh;
+    overflow-y:auto;
+    padding: 40px;
+    position:relative;
+    box-shadow: var(--ombre);
+  }
+  .modale-fermer{
+    position:absolute; top:18px; right:18px;
+    width:36px; height:36px;
+    border-radius:50%;
+    background: var(--sable);
+    font-size:1.1rem;
+    display:flex; align-items:center; justify-content:center;
+    transition: background .15s ease;
+  }
+  .modale-fermer:hover{ background: var(--ambre); }
+  .modale-contenu h2{ margin-bottom: 18px; font-size: 1.5rem; padding-right: 30px; }
+  .modale-contenu h3{ margin-top: 26px; margin-bottom: 10px; font-size: 1.1rem; }
+  .modale-contenu p{ color: var(--texte-doux); margin-bottom: 12px; }
+  .modale-contenu ul{ padding-left: 20px; list-style: disc; margin-bottom: 12px; }
+  .modale-contenu li{ color: var(--texte-doux); margin-bottom: 8px; }
+  .modale-contenu li strong{ color: var(--texte); }
+</style>
+</head>
+<body>
+
+<!-- ======================= EN-TÊTE ======================= -->
+<header class="entete">
+  <div class="entete-barre conteneur">
+    <a href="#accueil" class="logo">
+      <span class="logo-marque">M</span>
+      Majid Motivation
+    </a>
+
+    <nav class="nav-liens" aria-label="Navigation principale">
+      <a href="#ressources">Ressources</a>
+      <a href="#cours">Cours</a>
+      <a href="#comment">Comment ça marche</a>
+      <a href="#citation">Motivation</a>
+    </nav>
+
+    <div class="entete-actions">
+      <a href="#ressources" class="bouton bouton-principal">Commence maintenant</a>
+      <button class="menu-mobile-bouton" id="bouton-menu" aria-expanded="false" aria-controls="menu-mobile" aria-label="Ouvrir le menu">
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Menu qui s'ouvre sur mobile -->
+  <nav class="nav-liens-mobile" id="menu-mobile" aria-label="Navigation mobile">
+    <a href="#ressources">Ressources</a>
+    <a href="#cours">Cours</a>
+    <a href="#comment">Comment ça marche</a>
+    <a href="#citation">Motivation</a>
+    <a href="#ressources" class="bouton bouton-principal" style="margin-top:10px; text-align:center; justify-content:center;">Commence maintenant</a>
+  </nav>
+</header>
+
+<!-- ======================= HERO ======================= -->
+<section class="hero" id="accueil">
+  <div class="conteneur hero-grille">
+    <div>
+      <span class="hero-eyebrow"><span class="point"></span> Ta réussite commence aujourd'hui</span>
+      <h1>Majid Motivation</h1>
+      <p class="hero-phrase">Chaque jour de travail est un pas de plus vers ton examen.</p>
+      <p class="hero-texte">
+        Majid Motivation rassemble tout ce qu'il te faut pour progresser : des cours clairs,
+        des exercices pour t'entraîner, des conseils pour bien réviser et des ressources pour
+        aborder tes examens avec confiance.
+      </p>
+      <div class="hero-actions">
+        <a href="#ressources" class="bouton bouton-principal" id="bouton-demarrer">Commence maintenant</a>
+        <a href="#comment" class="hero-lien-secondaire">Voir comment ça marche</a>
+      </div>
+    </div>
+
+    <div class="carte-serie">
+      <div class="carte-serie-entete">
+        <p>Série en cours</p>
+        <p class="carte-serie-nombre">5 jours</p>
+      </div>
+      <div class="jours-semaine">
+        <span class="jour fait">L</span>
+        <span class="jour fait">M</span>
+        <span class="jour fait">M</span>
+        <span class="jour fait">J</span>
+        <span class="jour fait">V</span>
+        <span class="jour">S</span>
+        <span class="jour">D</span>
+      </div>
+      <p class="carte-serie-citation">« La régularité bat l'intensité. »</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= APERÇU DES RESSOURCES ======================= -->
+<section class="apercu" id="cours">
+  <div class="conteneur">
+    <div class="section-entete">
+      <h2>Tout ce qu'il te faut, au même endroit</h2>
+      <p>Quatre types de ressources pensés pour t'accompagner du premier cours jusqu'au jour de l'examen.</p>
+    </div>
+
+    <div class="apercu-grille">
+      <div class="apercu-carte">
+        <div class="apercu-icone" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15.5H6.5A2.5 2.5 0 0 0 4 21V5.5Z"/><path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20"/></svg>
+        </div>
+        <h3>Cours</h3>
+        <p>Des leçons expliquées simplement, matière par matière, pour comprendre avant de mémoriser.</p>
+      </div>
+
+      <div class="apercu-carte">
+        <div class="apercu-icone" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3>Exercices</h3>
+        <p>Des exercices corrigés pour t'entraîner à ton rythme et vérifier ce que tu as compris.</p>
+      </div>
+
+      <div class="apercu-carte">
+        <div class="apercu-icone" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="4"/></svg>
+        </div>
+        <h3>Conseils de révision</h3>
+        <p>Des méthodes concrètes pour organiser ton temps et retenir plus facilement.</p>
+      </div>
+
+      <div class="apercu-carte">
+        <div class="apercu-icone" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5V4a1 1 0 0 1 1-1h11l4 4v12.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Z"/><path d="M15 3v4h4"/><path d="M8 13h8M8 17h5"/></svg>
+        </div>
+        <h3>Préparation aux examens</h3>
+        <p>Des plannings de révision et des sujets type pour arriver serein le jour J.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= RESSOURCES + FILTRES ======================= -->
+<section class="ressources" id="ressources">
+  <div class="conteneur">
+    <div class="section-entete">
+      <h2>Choisis ce que tu veux consulter</h2>
+      <p>Filtre par catégorie pour retrouver exactement ce dont tu as besoin.</p>
+    </div>
+
+    <!-- Boutons de filtre : le JavaScript lit l'attribut data-filtre -->
+    <div class="filtres" role="group" aria-label="Filtrer les ressources">
+      <button class="filtre-bouton actif" data-filtre="tout">Tout voir</button>
+      <button class="filtre-bouton" data-filtre="cours">Cours</button>
+      <button class="filtre-bouton" data-filtre="exercices">Exercices</button>
+      <button class="filtre-bouton" data-filtre="conseils">Conseils de révision</button>
+      <button class="filtre-bouton" data-filtre="examens">Examens</button>
+    </div>
+
+    <div class="ressources-grille" id="grille-ressources">
+
+      <article class="ressource-carte mise-en-avant" data-categorie="examens">
+        <div>
+          <span class="ressource-tag">Examens</span>
+          <h3 style="margin-top:14px; font-size:1.5rem;">Plan de révision pour ton prochain examen</h3>
+          <p>Un planning semaine par semaine pour répartir tes révisions sans stress, matière par matière.</p>
+          <div class="ressource-meta">
+            <span>Toutes matières</span>
+            <button type="button" class="ressource-lien">Consulter →</button>
+          </div>
+        </div>
+        <div>
+          <div class="jours-semaine" style="max-width:280px;">
+            <span class="jour fait">L</span><span class="jour fait">M</span><span class="jour fait">M</span>
+            <span class="jour">J</span><span class="jour">V</span><span class="jour">S</span><span class="jour">D</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="ressource-carte" data-categorie="cours">
+        <span class="ressource-tag">Cours</span>
+        <h3>Mathématiques — Les fonctions</h3>
+        <p>Comprendre les fonctions étape par étape, avec des exemples simples et des schémas.</p>
+        <div class="ressource-meta"><span>Niveau collège</span><button type="button" class="ressource-lien">Consulter →</button></div>
+      </article>
+
+      <article class="ressource-carte" data-categorie="cours">
+        <span class="ressource-tag">Cours</span>
+        <h3>Français — L'argumentation</h3>
+        <p>Construire un texte argumentatif clair, avec une méthode en trois temps.</p>
+        <div class="ressource-meta"><span>Niveau lycée</span><button type="button" class="ressource-lien">Consulter →</button></div>
+      </article>
+
+      <article class="ressource-carte" data-categorie="exercices">
+        <span class="ressource-tag">Exercices</span>
+        <h3>Séries d'exercices corrigés — Physique</h3>
+        <p>Vingt exercices progressifs avec correction détaillée pour t'entraîner seul.</p>
+        <div class="ressource-meta"><span>15 min</span><button type="button" class="ressource-lien">Consulter →</button></div>
+      </article>
+
+      <article class="ressource-carte" data-categorie="exercices">
+        <span class="ressource-tag">Exercices</span>
+        <h3>Quiz express — Vocabulaire anglais</h3>
+        <p>Teste tes connaissances en quelques minutes et repère ce qu'il te reste à revoir.</p>
+        <div class="ressource-meta"><span>10 min</span><button type="button" class="ressource-lien">Consulter →</button></div>
+      </article>
+
+      <article class="ressource-carte" data-categorie="conseils">
+        <span class="ressource-tag">Conseils</span>
+        <h3>Organiser ses journées de révision</h3>
+        <p>Une méthode simple pour découper ton temps et éviter de tout faire la veille.</p>
+        <div class="ressource-meta"><span>Lecture 5 min</span><button type="button" class="ressource-lien">Consulter →</button></div>
+      </article>
+
+      <article class="ressource-carte" data-categorie="conseils">
+        <span class="ressource-tag">Conseils</span>
+        <h3>Mieux mémoriser avec les fiches</h3>
+        <p>Comment construire des fiches de révision efficaces, matière par matière.</p>
+        <div class="ressource-meta"><span>Lecture 4 min</span><button type="button" class="ressource-lien">Consulter →</button></div>
+      </article>
+
+      <article class="ressource-carte" data-categorie="examens">
+        <span class="ressource-tag">Examens</span>
+        <h3>Sujets d'annales corrigés</h3>
+        <p>Des sujets déjà tombés aux examens précédents, avec leur corrigé complet.</p>
+        <div class="ressource-meta"><span>Toutes matières</span><button type="button" class="ressource-lien">Consulter →</button></div>
+      </article>
+
+      <article class="ressource-carte" data-categorie="conseils">
+        <span class="ressource-tag">Conseils</span>
+        <h3>Kit de Réussite Académique</h3>
+        <p>Le guide ultime de la productivité étudiante : gestion du temps, mémorisation active et technique pour réussir tes présentations orales.</p>
+        <div class="ressource-meta"><span>Guide complet</span><a href="ressources/conseils/kit-reussite-academique.pdf" target="_blank" rel="noopener" class="ressource-lien">Consulter →</a></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======================= COMMENT ÇA MARCHE ======================= -->
+<section class="fonctionnement" id="comment">
+  <div class="conteneur">
+    <div class="section-entete">
+      <h2>Comment ça marche</h2>
+      <p>Trois étapes simples pour commencer à progresser dès aujourd'hui.</p>
+    </div>
+
+    <div class="etapes">
+      <div class="etape">
+        <p class="etape-numero">01</p>
+        <h3>Clique sur « Commence maintenant »</h3>
+        <p>Le bouton t'amène directement aux ressources disponibles.</p>
+      </div>
+      <div class="etape">
+        <p class="etape-numero">02</p>
+        <h3>Choisis ta catégorie</h3>
+        <p>Cours, exercices, conseils ou examens : filtre pour trouver ce qu'il te faut.</p>
+      </div>
+      <div class="etape">
+        <p class="etape-numero">03</p>
+        <h3>Avance à ton rythme</h3>
+        <p>Reviens chaque jour pour garder ta série de révision active.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CITATION DU JOUR ======================= -->
+<section class="citation-section" id="citation">
+  <div class="conteneur">
+    <div class="citation-boite">
+      <p id="texte-citation">« Le succès, c'est se lever un peu plus souvent que l'on tombe. »</p>
+      <span id="auteur-citation">— Majid Motivation</span>
+      <button class="citation-bouton" id="bouton-citation">Une autre citation</button>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= MODALE DE LECTURE ======================= -->
+<div class="modale-fond" id="modale-fond">
+  <div class="modale-boite" role="dialog" aria-modal="true" aria-labelledby="modale-titre">
+    <button class="modale-fermer" id="modale-fermer" aria-label="Fermer">✕</button>
+    <div class="modale-contenu" id="modale-contenu">
+      <!-- Le contenu est injecté en JavaScript, voir plus bas -->
+    </div>
+  </div>
+</div>
+
+<!-- ======================= PIED DE PAGE ======================= -->
+<footer class="pied">
+  <div class="conteneur">
+    <div class="pied-grille">
+      <div>
+        <p class="logo pied-logo">Majid Motivation</p>
+        <p>Une plateforme pour avancer chaque jour dans tes révisions, avec méthode et motivation.</p>
+      </div>
+      <div>
+        <h4>Ressources</h4>
+        <ul class="pied-liens">
+          <li><a href="#ressources">Cours</a></li>
+          <li><a href="#ressources">Exercices</a></li>
+          <li><a href="#ressources">Conseils de révision</a></li>
+          <li><a href="#ressources">Examens</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Plateforme</h4>
+        <ul class="pied-liens">
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#comment">Comment ça marche</a></li>
+          <li><a href="#citation">Motivation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="pied-liens">
+          <li><a href="#">Nous écrire</a></li>
+          <li><a href="#">Suivre l'actualité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied-bas">
+      <p>© 2026 Majid Motivation. Tous droits réservés.</p>
+      <p>Fait pour aider chaque élève à progresser.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ==========================================================
+     JAVASCRIPT — trois comportements interactifs :
+     1) ouvrir/fermer le menu sur mobile
+     2) filtrer les cartes de ressources par catégorie
+     3) afficher une nouvelle citation motivante au clic
+  ========================================================== */
+
+  // ----- 1) Menu mobile -----
+  const boutonMenu = document.getElementById('bouton-menu');
+  const menuMobile = document.getElementById('menu-mobile');
+
+  boutonMenu.addEventListener('click', function () {
+    const estOuvert = menuMobile.classList.toggle('ouvert');
+    boutonMenu.classList.toggle('ouvert', estOuvert);
+    boutonMenu.setAttribute('aria-expanded', estOuvert);
+  });
+
+  // Ferme le menu mobile automatiquement quand on clique sur un lien
+  menuMobile.querySelectorAll('a').forEach(function (lien) {
+    lien.addEventListener('click', function () {
+      menuMobile.classList.remove('ouvert');
+      boutonMenu.classList.remove('ouvert');
+      boutonMenu.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ----- 2) Filtres de ressources -----
+  const boutonsFiltre = document.querySelectorAll('.filtre-bouton');
+  const cartesRessources = document.querySelectorAll('#grille-ressources .ressource-carte');
+
+  boutonsFiltre.forEach(function (bouton) {
+    bouton.addEventListener('click', function () {
+      const categorieChoisie = bouton.dataset.filtre;
+
+      // Met à jour l'apparence des boutons (lequel est actif)
+      boutonsFiltre.forEach(function (b) { b.classList.remove('actif'); });
+      bouton.classList.add('actif');
+
+      // Affiche ou cache chaque carte selon sa catégorie
+      cartesRessources.forEach(function (carte) {
+        const correspond = categorieChoisie === 'tout' || carte.dataset.categorie === categorieChoisie;
+        carte.classList.toggle('liste-cachee', !correspond);
+      });
+    });
+  });
+
+  // ----- 3) Citations motivantes -----
+  const citations = [
+    { texte: "Le succès, c'est se lever un peu plus souvent que l'on tombe.", auteur: "Majid Motivation" },
+    { texte: "Un peu de travail chaque jour vaut mieux qu'une nuit blanche avant l'examen.", auteur: "Majid Motivation" },
+    { texte: "Tu n'as pas besoin d'être parfait, tu as besoin d'être régulier.", auteur: "Majid Motivation" },
+    { texte: "Chaque exercice résolu est une preuve que tu progresses.", auteur: "Majid Motivation" },
+    { texte: "La confiance le jour de l'examen se construit bien avant.", auteur: "Majid Motivation" },
+    { texte: "Commence là où tu es, avec ce que tu as.", auteur: "Majid Motivation" }
+  ];
+
+  const texteCitation = document.getElementById('texte-citation');
+  const boutonCitation = document.getElementById('bouton-citation');
+  let dernierIndex = 0;
+
+  boutonCitation.addEventListener('click', function () {
+    let nouvelIndex;
+    // On tire une citation différente de la précédente
+    do {
+      nouvelIndex = Math.floor(Math.random() * citations.length);
+    } while (nouvelIndex === dernierIndex && citations.length > 1);
+
+    dernierIndex = nouvelIndex;
+
+    // Petite transition douce : on fait disparaître puis réapparaître le texte
+    texteCitation.style.opacity = 0;
+    setTimeout(function () {
+      texteCitation.textContent = '« ' + citations[nouvelIndex].texte + ' »';
+      texteCitation.style.opacity = 1;
+    }, 180);
+  });
+  texteCitation.style.transition = 'opacity .18s ease';
+
+  // ----- 4) Modale de lecture des ressources -----
+  // Pour ajouter une nouvelle ressource "lisible" : donne un attribut
+  // data-ressource="ma-cle" au lien "Consulter →" de sa carte, puis
+  // ajoute une entrée ici avec la même clé.
+  const ressourcesDetail = {
+    'kit-reussite': {
+      titre: "Kit de Réussite Académique — Le Guide Ultime de la Productivité Étudiante",
+      html: `
+        <p>Ce kit donne des clés concrètes pour réviser moins longtemps, retenir plus d'informations et mieux structurer ses sessions de travail.</p>
+
+        <h3>Chapitre 1 — La méthode des blocs centrés (gestion du temps)</h3>
+        <ul>
+          <li><strong>Bloc de focalisation (25 min)</strong> : téléphone en mode avion, aucune distraction, une seule tâche à la fois.</li>
+          <li><strong>Bloc de récupération (5 min)</strong> : se lever, marcher, s'étirer — sans écran.</li>
+          <li><strong>Grand cycle</strong> : après 4 blocs, une vraie pause de 20 à 30 minutes pour laisser le cerveau assimiler le travail.</li>
+        </ul>
+
+        <h3>Chapitre 2 — La restitution active (mémorisation long terme)</h3>
+        <ul>
+          <li><strong>La page blanche</strong> : après un chapitre, fermer le cahier et réécrire de mémoire tout ce dont on se souvient, puis corriger en rouge.</li>
+          <li><strong>Les flashcards</strong> : une question au recto, la réponse au verso ; on sépare les cartes ratées pour insister dessus.</li>
+        </ul>
+
+        <h3>Chapitres 3 et 4 — Dompter le trac à l'oral</h3>
+        <p>Juste avant de passer au tableau : la règle des 3 inspirations (4 secondes d'inspiration, 4 de blocage, 4 d'expiration, répété 3 fois) pour couper l'adrénaline du stress. Ensuite, la posture d'ancrage : pieds écartés à la largeur des épaules, bras non croisés, mains hors des poches.</p>
+
+        <h3>Chapitre 5 — Structurer une présentation captivante</h3>
+        <ul>
+          <li><strong>L'ouverture choc (30 premières secondes)</strong> : jamais « aujourd'hui on va parler de... », plutôt une question, une statistique surprenante ou une courte histoire.</li>
+          <li><strong>Le fil conducteur</strong> : 3 points clés maximum, avec une transition claire entre chacun.</li>
+          <li><strong>La conclusion mémorable</strong> : résumer l'idée en une phrase percutante, puis terminer par une question ouverte pour lancer le débat.</li>
+        </ul>
+      `
+    }
+  };
+
+  const modaleFond = document.getElementById('modale-fond');
+  const modaleContenu = document.getElementById('modale-contenu');
+  const modaleFermer = document.getElementById('modale-fermer');
+
+  function ouvrirRessource(cle) {
+    const detail = ressourcesDetail[cle];
+    if (!detail) return;
+    modaleContenu.innerHTML = '<h2 id="modale-titre">' + detail.titre + '</h2>' + detail.html;
+    modaleFond.classList.add('ouverte');
+    document.body.style.overflow = 'hidden';
+    modaleFermer.focus();
+  }
+
+  function fermerModale() {
+    modaleFond.classList.remove('ouverte');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-ressource]').forEach(function (lien) {
+    lien.addEventListener('click', function (e) {
+      e.preventDefault();
+      ouvrirRessource(lien.dataset.ressource);
+    });
+  });
+
+  modaleFermer.addEventListener('click', fermerModale);
+  modaleFond.addEventListener('click', function (e) {
+    if (e.target === modaleFond) fermerModale();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') fermerModale();
+  });
+</script>
+
+</body>
+</html>
