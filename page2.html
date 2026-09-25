@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séries d'exercices corrigés — Physique | Majid Académie</title>
+  <style>
+    :root {
+      --primary: #0F172A;
+      --accent: #2563EB;
+      --accent-hover: #1D4ED8;
+      --bg: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --text: #1E293B;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 40px;
+    }
+
+    header {
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .brand-logo {
+      background: var(--primary);
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+
+    .back-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .breadcrumb {
+      display: flex;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .hero {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 25px;
+      border: 1px solid var(--border);
+      margin-bottom: 25px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #EFF6FF;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      padding-top: 15px;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin: 25px 0 15px 0;
+    }
+
+    .doc-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .doc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .doc-title {
+      font-size: 1.1rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .doc-filename {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: monospace;
+      margin-top: 2px;
+    }
+
+    .doc-size {
+      font-size: 0.75rem;
+      background: #F1F5F9;
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: var(--text-muted);
+    }
+
+    .doc-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .doc-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 5px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background: #F1F5F9;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand">
+      <div class="brand-logo">M</div>
+      <span>Majid Académie</span>
+    </a>
+    <a href="index.html" class="back-link">← Retour à l'accueil</a>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a> / 
+      <a href="#">Exercices</a> / 
+      <span>Physique</span>
+    </div>
+
+    <section class="hero">
+      <span class="badge">Ressources d'études</span>
+      <h1>Séries d'exercices corrigés — Physique</h1>
+      <p class="subtitle">
+        Retrouvez l'ensemble des cours, énoncés et corrections de physique en téléchargement libre ou consultables directement en ligne.
+      </p>
+      <div class="meta-grid">
+        <div>📁 <strong>2 Documents</strong> PDF</div>
+        <div>✅ <strong>Solutions</strong> détaillées</div>
+        <div>🎓 <strong>Niveau</strong> Lycée / Bac</div>
+      </div>
+    </section>
+
+    <h2 class="section-title">Documents disponibles</h2>
+
+    <!-- Document 1 -->
+    <article class="doc-card">
+      <div class="doc-header">
+        <div>
+          <h3 class="doc-title">Livre complet d'exercices</h3>
+          <div class="doc-filename">Exercice-physique1.pdf</div>
+        </div>
+        <span class="doc-size">158 KB</span>
+      </div>
+      <p class="doc-desc">
+        Recueil complet regroupant tous les travaux dirigés, problèmes complexes et corrigés pas-à-pas pour maîtriser l'ensemble du programme.
+      </p>
+      <div class="doc-actions">
+        <a href="ressources/exercices/Exercice-physique1.pdf" target="_blank" class="btn btn-outline">Visualiser</a>
+        <a href="ressources/exercices/Exercice-physique1.pdf" download class="btn btn-primary">Télécharger</a>
+      </div>
+    </article>
+
+    <!-- Document 2 -->
+    <article class="doc-card">
+      <div class="doc-header">
+        <div>
+          <h3 class="doc-title">Fiche d'exercices et résumés</h3>
+          <div class="doc-filename">exercices-physique.pdf</div>
+        </div>
+        <span class="doc-size">9 KB</span>
+      </div>
+      <p class="doc-desc">
+        Fiche synthétique contenant les exercices essentiels et formules clés pour vos révisions rapides.
+      </p>
+      <div class="doc-actions">
+        <a href="ressources/exercices/exercices-physique.pdf" target="_blank" class="btn btn-outline">Visualiser</a>
+        <a href="ressources/exercices/exercices-physique.pdf" download class="btn btn-primary">Télécharger</a>
+      </div>
+    </article>
+  </main>
+
+</body>
+</html>
