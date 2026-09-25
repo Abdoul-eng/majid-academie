@@ -651,6 +651,36 @@
     <a href="#ressources" class="bouton bouton-principal" style="margin-top:10px; text-align:center; justify-content:center;">Commence maintenant</a>
   </nav>
 </header>
+<!-- === BARRE DE RECHERCHE DYNAMIQUE === -->
+<div style="max-width: 600px; margin: 20px auto; padding: 0 15px;">
+  <div style="position: relative; display: flex; align-items: center;">
+    <span style="position: absolute; left: 16px; font-size: 1.1rem; color: #64748B;">🔍</span>
+    <input 
+      type="text" 
+      id="search-input" 
+      placeholder="Rechercher une matière, un cours, des exercices..." 
+      style="width: 100%; padding: 12px 15px 12px 45px; border-radius: 30px; border: 1px solid #CBD5E1; font-size: 0.95rem; outline: none; background: #FFFFFF; box-shadow: 0 2px 6px rgba(0,0,0,0.08);"
+      onkeyup="filtrerCartes()"
+    >
+  </div>
+</div>
+
+<script>
+function filtrerCartes() {
+  const recherche = document.getElementById('search-input').value.toLowerCase();
+  const cartes = document.querySelectorAll('.card, .doc-card, article'); 
+
+  cartes.forEach(carte => {
+    const texteCarte = carte.textContent.toLowerCase();
+    if (texteCarte.includes(recherche)) {
+      carte.style.display = "";
+    } else {
+      carte.style.display = "none";
+    }
+  });
+}
+</script>
+<!-- === FIN BARRE DE RECHERCHE === -->
 
 <!-- ======================= HERO ======================= -->
 <section class="hero" id="accueil">
