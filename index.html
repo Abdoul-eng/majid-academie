@@ -651,11 +651,54 @@
     <a href="#ressources" class="bouton bouton-principal" style="margin-top:10px; text-align:center; justify-content:center;">Commence maintenant</a>
   </nav>
 </header>
-<div style="max-width: 700px; margin: 20px auto; padding: 0 15px;">
+<!-- === RECHERCHE GOOGLE STYLISÉE MAJID ACADÉMIE === -->
+<style>
+  .recherche-container {
+    max-width: 650px;
+    margin: 25px auto;
+    padding: 0 15px;
+  }
+  
+  /* Masque les bordures brutes de Google et personnalise le champ */
+  .recherche-container .gsc-control-cse {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .recherche-container form.gsc-search-box {
+    margin-bottom: 0 !important;
+  }
+
+  .recherche-container input.gsc-input {
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 25px !important;
+    padding: 10px 18px !important;
+    font-size: 0.95rem !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+    outline: none !important;
+  }
+
+  /* Style du bouton de recherche Google */
+  .recherche-container button.gsc-search-button {
+    background-color: #0F172A !important; /* Couleur sombre assortie à ton en-tête */
+    border-radius: 20px !important;
+    border: none !important;
+    padding: 10px 18px !important;
+    margin-left: 8px !important;
+  }
+
+  .recherche-container button.gsc-search-button svg {
+    fill: #FFFFFF !important;
+  }
+</style>
+
+<div class="recherche-container">
   <script async src="https://cse.google.com/cse.js?cx=e32a71e61e07140ea"></script>
   <div class="gcse-search"></div>
 </div>
-
+<!-- === FIN RECHERCHE GOOGLE === -->
 
 <!-- ======================= HERO ======================= -->
 <section class="hero" id="accueil">
