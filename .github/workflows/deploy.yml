@@ -2,9 +2,8 @@ name: Deploy Majid Académie
 
 on:
   push:
-    branches: ["main"] # Ou "master" selon le nom de ta branche principale
+    branches: ["main"]
 
-  # Permet de lancer le déploiement manuellement si besoin
   workflow_dispatch:
 
 permissions:
@@ -21,7 +20,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-bootstrapped: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
